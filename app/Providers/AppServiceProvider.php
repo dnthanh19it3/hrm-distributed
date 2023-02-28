@@ -6,7 +6,7 @@ use App\Charts\AttendancesChart;
 use App\Charts\PerformanceChart;
 use App\Models\Access;
 use Illuminate\Support\ServiceProvider;
-use ConsoleTVs\Charts\Registrar as Charts;
+//use ConsoleTVs\Charts\Registrar as Charts;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 
@@ -27,15 +27,23 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Charts $charts)
-    {
-        Paginator::useBootstrap();
-        
-        $charts->register([
-            AttendancesChart::class,
-            PerformanceChart::class
-        ]);
+//    public function boot(Charts $charts)
+//    {
+//        Paginator::useBootstrap();
+//
+//        $charts->register([
+//            AttendancesChart::class,
+//            PerformanceChart::class
+//        ]);
+//
+//        View::composer('*', function($view) {
+//            if(auth()->check()) {
+//                $accesses = resolve(Access::class)->get(true);
+//                return $view->with('accesses', $accesses);
+//            }
+//        });
 
+    public function boot(){
         View::composer('*', function($view) {
             if(auth()->check()) {
                 $accesses = resolve(Access::class)->get(true);

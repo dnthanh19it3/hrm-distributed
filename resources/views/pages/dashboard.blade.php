@@ -1,4 +1,4 @@
-@extends('layouts.admin', ['accesses' => $accesses, 'active' => 'dashboard'])
+@extends('layouts.admin', ['accesses' => $accesses ?? [], 'active' => 'dashboard'])
 
 @section('_content')
 <div class="container-fluid mt-2 px-4">
@@ -15,7 +15,7 @@
       </div>
   @endif
 
-  @if (auth()->user()->isAdmin())    
+  @if (auth()->user()->isAdmin())
     <div class="row">
         <div class="col-sm-12 col-lg-6 mb-3">
             <div class="bg-light text-dark d-flex flex-column justify-content-center align-items-center py-5 card">
@@ -55,7 +55,7 @@
                       @endforeach
                     </tbody>
                   </table>
-                  
+
                   {{ $endingEmployees->links() }}
             </div>
         </div>

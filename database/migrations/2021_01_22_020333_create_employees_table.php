@@ -13,6 +13,7 @@ class CreateEmployeesTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
@@ -24,12 +25,14 @@ class CreateEmployeesTable extends Migration
             $table->unsignedBigInteger('head_of')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
-
+//            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('set null');
             $table->foreign('position_id')->references('id')->on('positions')->onDelete('set null');
-            $table->foreign('head_of')->references('id')->on('departments')->onDelete('set null');
+//            $table->foreign('head_of')->references('id')->on('departments')->onDelete('set null');
+            $table->foreign('head_of')->references('id')->on('departments')->onDelete('no action');
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

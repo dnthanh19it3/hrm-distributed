@@ -24,7 +24,6 @@ class CreateRecruitmentCandidatesTable extends Migration
             $table->string('address');
             $table->string('message');
             $table->timestamps();
-
             $table->foreign('recruitment_id')->references('id')->on('recruitments')->onDelete('cascade');
         });
     }

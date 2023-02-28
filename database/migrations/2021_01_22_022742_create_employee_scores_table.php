@@ -24,7 +24,8 @@ class CreateEmployeeScoresTable extends Migration
 
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
             $table->foreign('score_category_id')->references('id')->on('score_categories')->onDelete('set null');
-            $table->foreign('scored_by')->references('id')->on('employees')->onDelete('set null');
+//            $table->foreign('scored_by')->references('id')->on('employees')->onDelete('set null');
+            $table->foreign('scored_by')->references('id')->on('employees')->onDelete('no action');
         });
     }
 

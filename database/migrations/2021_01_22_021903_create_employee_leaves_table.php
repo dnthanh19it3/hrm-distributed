@@ -19,7 +19,6 @@ class CreateEmployeeLeavesTable extends Migration
             $table->integer('leaves_quota');
             $table->integer('used_leaves');
             $table->timestamps();
-
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
         });
     }

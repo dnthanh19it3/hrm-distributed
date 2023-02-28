@@ -21,7 +21,6 @@ class CreateRecruitmentsTable extends Migration
             $table->string('attachment')->nullable();
             $table->boolean('is_active');
             $table->timestamps();
-
             $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
         });
     }

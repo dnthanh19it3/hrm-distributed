@@ -36,6 +36,9 @@ Auth::routes([
     'verify' => false,
     'reset' => false
 ]);
+Route::get("phpinfo", function (){
+    phpinfo();
+});
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome')->middleware('guest');
 Route::get('/welcome/announcements', [WelcomeController::class, 'announcements'])->name('welcome.announcements')->middleware('guest');
@@ -127,5 +130,5 @@ Route::middleware('check.access')->group(function() {
     Route::put('/roles/{role}', [RolesController::class, 'update'])->name('roles.update');
     Route::delete('/roles/{role}', [RolesController::class, 'destroy'])->name('roles.destroy');
     Route::get('/profile', [ProfilesController::class, 'index'])->name('profile');
-    Route::put('/profile/{user}', [ProfilesController::class, 'update'])->name('profile.update');    
+    Route::put('/profile/{user}', [ProfilesController::class, 'update'])->name('profile.update');
 });
